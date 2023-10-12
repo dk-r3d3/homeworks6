@@ -1,5 +1,10 @@
 package Data.models;
 
+/**
+ * Здесь и в остальных классах, наследующихся от класса User
+ * реализваон принцип Liskov Substitution Principle
+ * Т к наследники могут использоваться вместо родительских классов
+ */
 public class Schoolboy extends User {
     int classNumber;
 

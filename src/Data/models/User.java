@@ -1,5 +1,11 @@
 package Data.models;
 
+/**
+ * Здесь реализвоан принцип Dependency Inversion Principle
+ * Данный абстрактный класс не зависит от деталей
+ * Все классы наследующиеся от User, зависят от User, а User
+ * в свою очередь, не зависит от классов - наследников (Schoolboy, Student, Worker)
+ */
 public abstract class User {
     protected int id;
     protected String name;

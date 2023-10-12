@@ -5,6 +5,14 @@ import Data.models.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Здесь реализовани принцип Single Responsibility Principle
+ * Класс UserService отвечает только за создание, получение объектов класса User
+ * Был ПЕРЕНЕСЕН метод toSend, т к он не относится к классу UserService
+ * Данный метод был вынесен в UserMethods, и для него был создан MethodsService
+ * Так же здесь реализован принцип Interface Segregation Principle
+ * Все методы, описанные в интерфейсе, используются в UserService
+ */
 public class UserService implements DataService {
     List<User> workersList = new ArrayList<>();
     List<User> studentsList = new ArrayList<>();
@@ -30,11 +38,11 @@ public class UserService implements DataService {
         schoolboysList.add(schoolboy);
         return schoolboy;
     }
-
-    @Override
-    public String toSend(String text) {
-        return text;
-    }
+    /*ПЕРЕНЕС ДАННЫЙ МЕТОД*/
+//    @Override
+//    public String toSend(String text) {
+//        return text;
+//    }
 
     @Override
     public List<User> readSchoolboys() {

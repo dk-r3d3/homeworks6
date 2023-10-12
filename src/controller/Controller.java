@@ -2,14 +2,21 @@ package controller;
 
 import Data.models.*;
 import Data.service.DataService;
+import Data.service.MethodsService;
 import Data.service.UserService;
 import Data.view.InformingView;
 import Data.view.UserView;
 
 import java.util.List;
 
+/**
+ * Здесь реализован принцип Open-Closed Principle
+ * чтобы расширить возможности класса контроллера - не надо модификаций
+ * достаточно добавить либо новый метод, либо новую перегрузку sendRequest
+ */
 public class Controller {
     DataService dataService;
+    MethodsService methodsService;
     UserView userView;
     InformingView informingView;
 
@@ -17,7 +24,14 @@ public class Controller {
         this.dataService = new UserService();
         this.userView = new UserView();
         this.informingView = new InformingView();
+        this.methodsService = new MethodsService() {
+            @Override
+            public String toSend(String text) {
+                return null;
+            }
+        };
     }
+
 
     public void sendRequest(int id, String name, String dateBirth, String companyName, String position) {
         Worker worker = dataService.create(id, name, dateBirth, companyName, position);
@@ -35,7 +49,7 @@ public class Controller {
     }
 
     public void sendRequest(String text, String group) {
-        String resTxt = dataService.toSend(text);
+        String resTxt = methodsService.toSend(text);
         switch (group) {
             case "workers":
                 List<User> listWorkers = dataService.readWorkers();

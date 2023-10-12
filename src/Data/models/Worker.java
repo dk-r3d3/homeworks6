@@ -4,6 +4,9 @@ public class Worker extends User {
     String companyName;
     String position;
 
+    /**
+     * реализваон принцип Liskov Substitution Principle
+     */
     public Worker(int id, String name, String dateBirth, String companyName, String position) {
         super(id, name, dateBirth);
         this.companyName = companyName;

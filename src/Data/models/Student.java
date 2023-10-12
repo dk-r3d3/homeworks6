@@ -4,6 +4,9 @@ public class Student extends User {
     String nameInstitution;
     int course;
 
+    /**
+     * реализваон принцип Liskov Substitution Principle
+     */
     public Student(Integer id, String name, String dateBirth, String nameInstitution, int course) {
         super(id, name, dateBirth);
         this.nameInstitution = nameInstitution;

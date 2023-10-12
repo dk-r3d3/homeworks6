@@ -4,6 +4,10 @@ import Data.models.*;
 
 import java.util.List;
 
+/**
+ * Здесь реализован принцип Interface Segregation Principle
+ * Все методы, описанные в интерфейсе, используются в UserService
+ */
 public interface DataService {
     Worker create(int id, String name, String dateBirth, String companyName, String position);
 
@@ -11,7 +15,7 @@ public interface DataService {
 
     Schoolboy create(int id, String name, String dateBirth, int classNumber);
 
-    String toSend(String text);
+//    String toSend(String text);
 
     List<User> readWorkers();
 
